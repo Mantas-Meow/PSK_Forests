@@ -52,9 +52,9 @@ public class MunicipalityTreesMB implements Serializable {
 
     @Transactional
     public String addNewTreeForMunicipality() {
-        if(treeMapper.getResultCountByTreeName(treeToAdd.getTreeName()) == 0) {
+//        if(treeMapper.getResultCountByTreeName(treeToAdd.getTreeName()) == 0) {
             treeMapper.insert(treeToAdd);
-        }
+//        }
         Tree addedTree = treeMapper.findByName(treeToAdd.getTreeName());
         TreesMunicipalities treesMunicipalities = new TreesMunicipalities();
         treesMunicipalities.setTreeId(addedTree.getId());

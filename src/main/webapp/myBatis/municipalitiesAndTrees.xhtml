@@ -8,12 +8,12 @@
 <h:body>
     <h2>Municipalities:</h2>
     <ol>
-        <ui:repeat value="#{municipalitiesAndTreesMB.allMunicipalities}" var="municipality">
-            <li><h:link value="#{municipality.municipalityName} #{municipality.municipalityCountryName}" outcome="/myBatis/municipalityTrees?municipalityId=#{municipality.id}" /></li>
+        <ui:repeat value="#{municipalitiesAndTreesMB.allMunicipalities}" var="municipalityMB">
+            <li><h:link value="#{municipalityMB.municipalityName} #{municipalityMB.municipalityCountryName}" outcome="/myBatis/municipalityTrees?municipalityId=#{municipalityMB.id}" /></li>
 
             <span>Trees: </span>
             <ul>
-                <ui:repeat value="#{municipality.treeList}" var="tree">
+                <ui:repeat value="#{municipalityMB.treeList}" var="tree">
                     <li><h:link value="#{tree.id} #{tree.treeName}." outcome="/myBatis/municipalityListForTrees?treeId=#{tree.id}" /></li>
                 </ui:repeat>
             </ul>

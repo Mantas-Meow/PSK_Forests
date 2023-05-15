@@ -13,7 +13,7 @@
         </ui:repeat>
     </ol>
 
-    <h2>Select one of the available Forest:</h2>
+    <h2>Select one of the available Forest to add a tree to:</h2>
     <ol>
         <ui:repeat value="#{forests.allForests}" var="forest">
             <li><h:link value="#{forest.forest_name}" outcome="trees?forestId=#{forest.id}"/></li>
