@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:f="http://java.sun.com/jsf/core">
+<h:head/>
+<h:body>
+    <h2>#{forestTrees.forest.forest_name} trees:</h2>
+    <ol>
+        <ui:repeat value="#{forestTrees.forest.trees}" var="tree">
+            <li>#{tree.tree_name}</li>
+        </ui:repeat>
+    </ol>
+    <br></br>
+    <h:form>
+        <h:inputText a:placeholder="name" value="#{forestTrees.treeToCreate.tree_name}" required="true" />
+        <h:commandButton value="Assign Tree to the Forest" action="#{forestTrees.createTree}" >
+            <f:param name="forestId" value="#{forestTrees.forest.id}" />
+        </h:commandButton>
+    </h:form>
+    <h:link value="Back to index" outcome="/index"/>
+</h:body>
+</html>

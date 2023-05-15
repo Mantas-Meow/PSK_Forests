@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+>
+<h:head/>
+<h:body>
+    <h2>Municipalities:</h2>
+    <ol>
+        <ui:repeat value="#{municipalitiesAndTreesMB.allMunicipalities}" var="municipality">
+            <li><h:link value="#{municipality.municipalityName} #{municipality.municipalityCountryName}" outcome="/myBatis/municipalityTrees?municipalityId=#{municipality.id}" /></li>
+
+            <span>Trees: </span>
+            <ul>
+                <ui:repeat value="#{municipality.treeList}" var="tree">
+                    <li><h:link value="#{tree.id} #{tree.treeName}." outcome="/myBatis/municipalityListForTrees?treeId=#{tree.id}" /></li>
+                </ui:repeat>
+            </ul>
+            <hr/>
+
+        </ui:repeat>
+    </ol>
+    <h1>Add new municipality</h1>
+    <h:form>
+        <label>municipality name: </label>
+        <h:inputText value="#{municipalitiesAndTreesMB.municipalityToCreate.municipalityName}" required="true"/>
+        <br/><br/>
+        <label>municipalities country: </label>
+        <h:inputText value="#{municipalitiesAndTreesMB.municipalityToCreate.municipalityCountryName}" required="true"/>
+        <h:commandButton value="Add new municipality" action="#{municipalitiesAndTreesMB.createMunicipality()}" />
+    </h:form>
+    <h:link value="Back to index" outcome="/index"/>
+</h:body>
+</html>

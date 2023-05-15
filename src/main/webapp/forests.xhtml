@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+>
+<h:head/>
+<h:body>
+    <h2>Forests:</h2>
+    <ol>
+        <ui:repeat value="#{forests.allForests}" var="forest">
+            <li><h:link value="#{forest.forest_name}" outcome="trees?forestId=#{forest.id}"/></li>
+        </ui:repeat>
+    </ol>
+    <h:form>
+        <h:panelGrid columns="2">
+            <h:outputLabel for="name">Enter Name:</h:outputLabel>
+            <h:inputText id="name" value="#{forests.forestToCreate.forest_name}" required="true" maxlength="50"/>
+            <br/><br/>
+            <h:commandButton value="Add new forest" action="#{forests.createForest}"/>
+        </h:panelGrid>
+    </h:form>
+    <h:link value="Back to index" outcome="/index"/>
+</h:body>
+</html>

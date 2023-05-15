@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+<h:head/>
+<h:body>
+    <h2>Municipalities that are #{treeMunicipalitiesMB.tree.treeName}:</h2>
+    <ol>
+        <ui:repeat value="#{treeMunicipalitiesMB.tree.municipalityList}" var="municipality">
+            <li>#{municipality.municipalityName} #{municipality.municipalityCountryName}</li>
+        </ui:repeat>
+    </ol>
+    <h:link outcome="/myBatis/municipalitysAndTrees" value="Back to list"/>
+</h:body>
+</html>
