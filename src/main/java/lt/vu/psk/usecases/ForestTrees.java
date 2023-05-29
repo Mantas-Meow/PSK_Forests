@@ -2,6 +2,8 @@ package lt.vu.psk.usecases;
 
 import lombok.Getter;
 import lombok.Setter;
+import lt.vu.psk.alternative.Message;
+import lt.vu.psk.decorator.ForestDecorator;
 import lt.vu.psk.entities.Tree;
 import lt.vu.psk.entities.Forest;
 import lt.vu.psk.persistance.TreeDAO;
@@ -33,6 +35,12 @@ public class ForestTrees implements Serializable {
     @Getter
     private List<Tree> allTrees;
 
+    @Inject
+    private Message message;
+
+    @Inject
+    private ForestDecorator forestDecorator;
+
     public void loadAllTrees() {
         this.allTrees = treeDAO.loadAll();
     }
@@ -46,12 +54,11 @@ public class ForestTrees implements Serializable {
         loadAllTrees();
     }
 
-
-
     @Transactional
     public String createTree() {
-        treeToCreate.setForest(this.forest);
         treeDAO.persist(treeToCreate);
+        System.out.println(message.WriteMessage());
+        System.out.println("Decorator implementation: " + forestDecorator.DecoratedString("Test"));
         return "trees?faces-redirect=true&forestId=" + this.forest.getId();
     }
 }

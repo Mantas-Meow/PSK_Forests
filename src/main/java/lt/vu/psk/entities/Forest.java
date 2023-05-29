@@ -33,6 +33,13 @@ public class Forest implements Serializable {
     @OneToMany(mappedBy = "forest", fetch = FetchType.EAGER)
     private List<Tree> trees = new ArrayList<>();
 
+    @Column(name = "RANGERS", nullable = false, unique = false)
+    private Integer forest_ranger;
+
+    @Version
+    @Column(name = "OPT_LOCK_VERSION", columnDefinition = "integer default 0")
+    private Integer version;
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {

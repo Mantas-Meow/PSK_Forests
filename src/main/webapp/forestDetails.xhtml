@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:f="http://java.sun.com/jsf/core"
+>
+<h:head/>
+<h:body>
+    <h2>#{updateForestDetails.forest.forest_name}</h2>
+    <h:form>
+        <h:outputText value="Forest ranger Id number: "/>
+        <h:inputText a:placeholder="enter the value" value="#{updateForestDetails.forest.forest_ranger}" required="true" />
+        <h:commandButton value="update" action="#{updateForestDetails.updateForestMemberNumber()}">
+            <f:param name="forestId" value="#{updateForestDetails.forest.id}" />
+        </h:commandButton>
+        <h:outputText value=" Ranger Id was already updated by different user." rendered="#{param['error'] == 'optimistic-lock-exception'}" />
+    </h:form>
+    <h:form>
+        <h:outputText value="#{generateForestId.forestIdGeneratorStatus}"/>
+        <h:commandButton value="Generate forest ranger Id" disabled="#{generateForestId.forestIdGenerationRunning}" action="#{generateForestId.generateNewForestId()}">
+            <f:param name="forestId" value="#{updateForestDetails.forest.id}"/>
+        </h:commandButton>
+    </h:form>
+</h:body>
+</html>

@@ -9,16 +9,20 @@
     <h2>Forests:</h2>
     <ol>
         <ui:repeat value="#{forests.allForests}" var="forest">
-            <li><h:link value="#{forest.forest_name}" outcome="trees?forestId=#{forest.id}"/></li>
+            <li>
+                <h:link value="#{forest.forest_name} " outcome="trees?forestId=#{forest.id}"/>
+                <h:button value="Update" outcome="forestDetails?forestId=#{forest.id}" />
+            </li>
         </ui:repeat>
     </ol>
     <h:form>
-        <h:panelGrid columns="2">
-            <h:outputLabel for="name">Enter Name:</h:outputLabel>
+            <h:outputLabel for="name">Enter Name: </h:outputLabel>
             <h:inputText id="name" value="#{forests.forestToCreate.forest_name}" required="true" maxlength="50"/>
             <br/><br/>
+            <h:outputLabel for="forest_id">Enter Forest ranger ID: </h:outputLabel>
+            <h:inputText id="forest_id" value="#{forests.forestToCreate.forest_ranger}" required="true" />
+            <br/><br/>
             <h:commandButton value="Add new forest" action="#{forests.createForest}"/>
-        </h:panelGrid>
     </h:form>
     <h:link value="Back to index" outcome="/index"/>
 </h:body>

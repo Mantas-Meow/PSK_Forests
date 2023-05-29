@@ -65,7 +65,7 @@
                     <artifactId>mybatis-generator-maven-plugin</artifactId>
                     <version>1.3.5</version>
                     <configuration>
-                        <contexts>DB</contexts>
+                        <contexts>FoDB</contexts>
                         <verbose>true</verbose>
                     </configuration>
                     <executions>
